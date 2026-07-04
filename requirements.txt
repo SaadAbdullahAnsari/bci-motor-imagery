@@ -1,0 +1,17 @@
+mne
+moabb
+scikit-learn
+numpy
+scipy
+pandas
+matplotlib
+joblib
+pyriemann
+jupyter
+ipykernel
+pytest
+ruff
+black
+
+# Install Requirements using 'pip install -r requirements.txt'
+

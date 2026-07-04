@@ -1,0 +1,12 @@
+[project]
+name = "bci-motor-imagery"
+version = "0.1.0"
+description = "Left-vs-right motor imagery EEG classifier using MNE, MOABB, CSP, and LDA."
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
