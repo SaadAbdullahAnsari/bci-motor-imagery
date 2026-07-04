@@ -9,13 +9,17 @@ REPORT_DIR = PROJECT_ROOT / "reports"
 RANDOM_STATE = 42
 
 # Motor imagery rhythm range.
-# This captures much of the mu and beta rhythm range used in MI-BCI work.
+# 8-30 Hz roughly covers mu and beta rhythms commonly used in MI-BCI.
 FMIN = 8
 FMAX = 30
 
 # Start with one subject only.
-# Do not immediately use all subjects unless you enjoy confusing yourself.
 SUBJECTS = [1]
 
-# Dataset name we are starting with.
 DATASET_NAME = "BNCI2014_001"
+
+# CSP settings.
+N_CSP_COMPONENTS = 6
+
+MODEL_PATH = MODEL_DIR / "csp_lda_subject1.joblib"
+RESULTS_PATH = REPORT_DIR / "results_subject1.csv"

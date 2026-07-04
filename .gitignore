@@ -32,9 +32,12 @@ Thumbs.db
 
 # Test/cache folders
 .pytest_cache/
+*.egg-info/
+src/*.egg-info/
 
 # Downloaded EEG data/cache
 C-/
 mne_data/
 MNE-bnci-data/
 *.mat
+

@@ -1,9 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "bci-motor-imagery"
 version = "0.1.0"
 description = "Left-vs-right motor imagery EEG classifier using MNE, MOABB, CSP, and LDA."
 readme = "README.md"
 requires-python = ">=3.10"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.black]
 line-length = 88
