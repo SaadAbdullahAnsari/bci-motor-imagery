@@ -30,4 +30,11 @@ moabb_data/
 .DS_Store
 Thumbs.db
 
+# Test/cache folders
 .pytest_cache/
+
+# Downloaded EEG data/cache
+C-/
+mne_data/
+MNE-bnci-data/
+*.mat

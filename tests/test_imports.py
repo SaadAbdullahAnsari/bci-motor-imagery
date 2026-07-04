@@ -14,3 +14,13 @@ def test_core_imports():
     assert scipy is not None
     assert pandas is not None
     assert matplotlib is not None
+
+
+def test_project_imports():
+    from bci_mi.config import FMAX, FMIN, SUBJECTS
+    from bci_mi.data import load_left_right_data
+
+    assert FMIN == 8
+    assert FMAX == 30
+    assert SUBJECTS == [1]
+    assert load_left_right_data is not None
