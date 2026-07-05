@@ -225,11 +225,11 @@ def evaluate_eegnet(
     y_train_encoded, y_test_encoded, _ = encode_labels(y_train, y_test)
 
     X_train_part, X_val, y_train_part, y_val = train_test_split(
-    X_train_scaled,
-    y_train_encoded,
-    test_size=0.2,
-    random_state=seed,
-    stratify=y_train_encoded,
+        X_train_scaled,
+        y_train_encoded,
+        test_size=0.2,
+        random_state=seed,
+        stratify=y_train_encoded,
     )
 
     train_loader = make_tensor_loader(
@@ -385,17 +385,17 @@ def compare_subject(subject: int) -> list[dict]:
         print(f"CSP {n_components} balanced accuracy: {balanced_accuracy:.3f}")
 
         results.append(
-        {   
-            "subject": subject,
-            "model": "CSP + LDA",
-            "n_csp_components": n_components,
-            "seed": np.nan,
-            "accuracy": accuracy,
-            "balanced_accuracy": balanced_accuracy,
-            "best_val_accuracy": np.nan,
-            "epochs_trained": np.nan,
-        }
-    )
+            {
+                "subject": subject,
+                "model": "CSP + LDA",
+                "n_csp_components": n_components,
+                "seed": np.nan,
+                "accuracy": accuracy,
+                "balanced_accuracy": balanced_accuracy,
+                "best_val_accuracy": np.nan,
+                "epochs_trained": np.nan,
+            }
+        )
 
     print()
     print("Training EEGNetSmall across multiple seeds...")
@@ -477,6 +477,7 @@ def run_comparison(subjects: list[int] | None = None) -> pd.DataFrame:
     print(f"Saved comparison results to: {MODEL_COMPARISON_RESULTS_PATH}")
 
     return results_df
+
 
 if __name__ == "__main__":
     run_comparison(subjects=[1])

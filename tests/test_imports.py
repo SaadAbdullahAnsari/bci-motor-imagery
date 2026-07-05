@@ -78,3 +78,9 @@ def test_model_comparison_imports():
     assert build_csp_lda_pipeline is not None
     assert compare_subject is not None
     assert run_comparison is not None
+
+
+def test_model_comparison_plot_imports():
+    from bci_mi.plot_model_comparison import plot_model_comparison
+
+    assert plot_model_comparison is not None
