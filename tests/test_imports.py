@@ -21,9 +21,11 @@ def test_project_imports():
         ALL_SUBJECTS,
         ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH,
         CSP_COMPONENT_OPTIONS,
-        EEGNET_SEEDS,
         FMAX,
         FMIN,
+        MODEL_COMPARISON_ALL_SUBJECTS_PLOT_PATH,
+        MODEL_COMPARISON_SUBJECT_SUMMARY_PATH,
+        MODEL_COMPARISON_SUMMARY_PATH,
         N_CSP_COMPONENTS,
         SUBJECTS,
     )
@@ -40,6 +42,9 @@ def test_project_imports():
     assert build_pipeline is not None
     assert CSP_COMPONENT_OPTIONS == [2, 4, 6]
     assert ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH is not None
+    assert MODEL_COMPARISON_SUMMARY_PATH is not None
+    assert MODEL_COMPARISON_SUBJECT_SUMMARY_PATH is not None
+    assert MODEL_COMPARISON_ALL_SUBJECTS_PLOT_PATH is not None
 
 
 def test_pipeline_steps():
@@ -88,3 +93,15 @@ def test_model_comparison_plot_imports():
     from bci_mi.plot_model_comparison import plot_model_comparison
 
     assert plot_model_comparison is not None
+
+
+def test_summarise_comparison_imports():
+    from bci_mi.summarise_comparison import (
+        build_model_summary,
+        build_subject_summary,
+        main,
+    )
+
+    assert build_model_summary is not None
+    assert build_subject_summary is not None
+    assert main is not None

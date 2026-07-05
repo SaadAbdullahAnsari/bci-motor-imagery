@@ -11,6 +11,13 @@ ALL_SUBJECTS_RESULTS_PATH = REPORT_DIR / "all_subjects_results.csv"
 MODEL_PATH = MODEL_DIR / "csp_lda_subject1.joblib"
 RESULTS_PATH = REPORT_DIR / "results_subject1.csv"
 MODEL_COMPARISON_RESULTS_PATH = REPORT_DIR / "model_comparison_results.csv"
+MODEL_COMPARISON_SUMMARY_PATH = REPORT_DIR / "model_comparison_summary.csv"
+MODEL_COMPARISON_SUBJECT_SUMMARY_PATH = (
+    REPORT_DIR / "model_comparison_subject_summary.csv"
+)
+MODEL_COMPARISON_ALL_SUBJECTS_PLOT_PATH = (
+    REPORT_DIR / "model_comparison_all_subjects.png"
+)
 
 EEGNET_SEEDS = [0, 1, 2, 3, 4]
 
