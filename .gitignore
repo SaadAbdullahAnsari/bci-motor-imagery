@@ -34,6 +34,9 @@ Thumbs.db
 .pytest_cache/
 *.egg-info/
 src/*.egg-info/
+__pycache__/
+*.pyc
+
 
 # Downloaded EEG data/cache
 C-/
@@ -41,3 +44,10 @@ mne_data/
 MNE-bnci-data/
 *.mat
 
+# Generated model files
+models/*.joblib
+models/*.pkl
+
+# Generated reports/plots
+reports/*.csv
+reports/*.png

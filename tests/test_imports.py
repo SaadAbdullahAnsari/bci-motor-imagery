@@ -36,3 +36,14 @@ def test_pipeline_steps():
     step_names = [name for name, _ in pipeline.steps]
 
     assert step_names == ["csp", "lda"]
+
+
+def test_plotting_imports():
+    from bci_mi.plot_results import plot_confusion_matrix
+
+    assert plot_confusion_matrix is not None
+
+def test_plotting_imports():
+    from bci_mi.plot_results import plot_confusion_matrix
+
+    assert plot_confusion_matrix is not None
