@@ -17,7 +17,14 @@ def test_core_imports():
 
 
 def test_project_imports():
-    from bci_mi.config import ALL_SUBJECTS, FMAX, FMIN, N_CSP_COMPONENTS, SUBJECTS
+    from bci_mi.config import (
+        ALL_SUBJECTS,
+        CSP_COMPONENT_OPTIONS,
+        FMAX,
+        FMIN,
+        N_CSP_COMPONENTS,
+        SUBJECTS,
+    )
     from bci_mi.data import load_left_right_data
     from bci_mi.train import build_pipeline
 
@@ -28,6 +35,7 @@ def test_project_imports():
     assert N_CSP_COMPONENTS == 6
     assert load_left_right_data is not None
     assert build_pipeline is not None
+    assert CSP_COMPONENT_OPTIONS == [2, 4, 6]
 
 
 def test_pipeline_steps():
@@ -51,7 +59,22 @@ def test_benchmark_imports():
     assert evaluate_subject is not None
     assert run_all_subjects is not None
 
+
 def test_benchmark_plotting_imports():
     from bci_mi.plot_benchmark import plot_all_subject_accuracies
 
     assert plot_all_subject_accuracies is not None
+
+
+def test_model_comparison_imports():
+    from bci_mi.compare_models import (
+        EEGNetSmall,
+        build_csp_lda_pipeline,
+        compare_subject,
+        run_comparison,
+    )
+
+    assert EEGNetSmall is not None
+    assert build_csp_lda_pipeline is not None
+    assert compare_subject is not None
+    assert run_comparison is not None

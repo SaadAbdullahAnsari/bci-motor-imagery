@@ -5,7 +5,6 @@ import pandas as pd
 
 from bci_mi.config import ALL_SUBJECTS_RESULTS_PATH, REPORT_DIR
 
-
 ALL_SUBJECTS_ACCURACY_PLOT_PATH = REPORT_DIR / "all_subjects_accuracy.png"
 
 

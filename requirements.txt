@@ -12,6 +12,7 @@ ipykernel
 pytest
 ruff
 black
+torch
 
 # Install Requirements using 'pip install -r requirements.txt'
 
