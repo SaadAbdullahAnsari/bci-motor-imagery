@@ -26,6 +26,12 @@ Current subject 1 held-out session performance:
 Accuracy: 0.806
 ```
 
+All-subject mean accuracy:
+```text
+Accuracy: 0.747
+```
+
+
 Confusion matrix:
 
 ```text
@@ -88,6 +94,26 @@ This trains and evaluates one subject-specific CSP + LDA model per subject, then
 
 ```text
 reports/all_subjects_results.csv
+```
+
+## Plot all-subject benchmark results
+
+```bash
+python -m bci_mi.plot_benchmark
+```
+
+This creates:
+
+```text
+reports/all_subjects_accuracy.png
+```
+
+Current all-subject CSP + LDA benchmark:
+
+```text
+Mean accuracy: 0.747
+Best subject: 8, accuracy 0.951
+Worst subject: 5, accuracy 0.563
 ```
 
 ## Plot confusion matrix

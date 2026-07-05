@@ -50,3 +50,8 @@ def test_benchmark_imports():
 
     assert evaluate_subject is not None
     assert run_all_subjects is not None
+
+def test_benchmark_plotting_imports():
+    from bci_mi.plot_benchmark import plot_all_subject_accuracies
+
+    assert plot_all_subject_accuracies is not None
