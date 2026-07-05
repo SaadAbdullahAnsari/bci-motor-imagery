@@ -4,7 +4,6 @@ This repository implements and compares baseline models for EEG-based left-vs-ri
 
 The project uses classical EEG decoding methods and a compact EEGNet-style neural network to classify motor imagery trials from the `BNCI2014_001` dataset through MOABB.
 
-The main goal is not to pretend this is a production BCI. It is to build a clean, reproducible neural signal decoding pipeline and compare sensible baselines before doing anything more dramatic, because throwing deep learning at 144 EEG trials and hoping for enlightenment is how bad papers are born.
 
 ---
 
@@ -35,7 +34,7 @@ train on 0train session
 test on 1test session
 ```
 
-This avoids randomly mixing trials across sessions, which can make EEG results look better than they actually are. EEG leakage is very real. Very annoying. Very on-brand for biosignals.
+This avoids randomly mixing trials across sessions, which can make EEG results look better than they actually are.
 
 ---
 
@@ -153,7 +152,7 @@ EEGNetSmall can work well on some subjects, but is seed-sensitive and less stabl
 The current best practical baseline is CSP + LDA, not EEGNetSmall.
 ```
 
-This is not a failure of EEGNet as a method. It means this initial compact EEGNet-style implementation, trained subject-specifically on small data, is not yet competitive with CSP + LDA across all subjects. Shocking development: classical methods built for the exact problem are good at the exact problem.
+This is not a failure of EEGNet as a method. It means this initial compact EEGNet-style implementation, trained subject-specifically on small data, is not yet competitive with CSP + LDA across all subjects.
 
 ---
 
@@ -392,10 +391,6 @@ MNE-bnci-data/
 C-/
 ```
 
-This keeps the repository lightweight and reproducible.
-
-The repo contains code and configuration, not downloaded dataset files or generated model outputs. GitHub is not a storage cupboard. It has suffered enough.
-
 ---
 
 ## Reproducibility Notes
@@ -417,7 +412,7 @@ Current EEGNet seeds:
 0, 1, 2, 3, 4
 ```
 
-The EEGNet results should therefore be interpreted using mean and standard deviation, not one cherry-picked run. Civilization advances one avoided cherry-pick at a time.
+The EEGNet results should therefore be interpreted using mean and standard deviation, not one single best fit cherry-picked run. 
 
 ---
 
@@ -431,7 +426,6 @@ The current results suggest:
 4. **EEGNetSmall is more seed-sensitive and less stable than CSP + LDA.**
 5. **For this small subject-specific dataset setup, classical decoding remains more dependable than the current neural model.**
 
-This is a useful baseline result, not a final BCI system.
 
 ---
 
