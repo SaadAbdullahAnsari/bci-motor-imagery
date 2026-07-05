@@ -5,6 +5,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data"
 MODEL_DIR = PROJECT_ROOT / "models"
 REPORT_DIR = PROJECT_ROOT / "reports"
+ALL_SUBJECTS_RESULTS_PATH = REPORT_DIR / "all_subjects_results.csv"
 
 RANDOM_STATE = 42
 
@@ -15,6 +16,7 @@ FMAX = 30
 
 # Start with one subject only.
 SUBJECTS = [1]
+ALL_SUBJECTS = list(range(1, 10))
 
 DATASET_NAME = "BNCI2014_001"
 

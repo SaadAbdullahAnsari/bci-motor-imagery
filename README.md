@@ -78,6 +78,17 @@ python -m bci_mi.train
 ```bash
 python -m bci_mi.evaluate
 ```
+## Evaluate all subjects
+
+```bash
+python -m bci_mi.benchmark
+```
+
+This trains and evaluates one subject-specific CSP + LDA model per subject, then saves a summary table to:
+
+```text
+reports/all_subjects_results.csv
+```
 
 ## Plot confusion matrix
 
@@ -114,8 +125,7 @@ This keeps the repository lightweight and reproducible instead of turning GitHub
 
 Planned improvements:
 
-- Evaluate all 9 subjects.
-- Compare subject-specific performance.
+- Compare subject-specific performance across all 9 subjects.
 - Add filter-bank CSP.
 - Add Riemannian geometry classifier.
 - Compare against deeper models only after strong classical baselines.

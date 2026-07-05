@@ -17,13 +17,14 @@ def test_core_imports():
 
 
 def test_project_imports():
-    from bci_mi.config import FMAX, FMIN, N_CSP_COMPONENTS, SUBJECTS
+    from bci_mi.config import ALL_SUBJECTS, FMAX, FMIN, N_CSP_COMPONENTS, SUBJECTS
     from bci_mi.data import load_left_right_data
     from bci_mi.train import build_pipeline
 
     assert FMIN == 8
     assert FMAX == 30
     assert SUBJECTS == [1]
+    assert ALL_SUBJECTS == list(range(1, 10))
     assert N_CSP_COMPONENTS == 6
     assert load_left_right_data is not None
     assert build_pipeline is not None
@@ -43,7 +44,9 @@ def test_plotting_imports():
 
     assert plot_confusion_matrix is not None
 
-def test_plotting_imports():
-    from bci_mi.plot_results import plot_confusion_matrix
 
-    assert plot_confusion_matrix is not None
+def test_benchmark_imports():
+    from bci_mi.benchmark import evaluate_subject, run_all_subjects
+
+    assert evaluate_subject is not None
+    assert run_all_subjects is not None
