@@ -13,18 +13,21 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
+from pathlib import Path
 
 from bci_mi.config import (
+    ALL_SUBJECTS,
+    ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH,
     CSP_COMPONENT_OPTIONS,
     EEGNET_BATCH_SIZE,
     EEGNET_LEARNING_RATE,
     EEGNET_MAX_EPOCHS,
     EEGNET_PATIENCE,
+    EEGNET_SEEDS,
     EEGNET_WEIGHT_DECAY,
     MODEL_COMPARISON_RESULTS_PATH,
     RANDOM_STATE,
     REPORT_DIR,
-    EEGNET_SEEDS,
 )
 from bci_mi.data import load_left_right_data
 from bci_mi.train import make_train_test_split
@@ -434,14 +437,30 @@ def compare_subject(subject: int) -> list[dict]:
     return results
 
 
-def run_comparison(subjects: list[int] | None = None) -> pd.DataFrame:
+def run_comparison(
+    subjects: list[int] | None = None,
+    output_path: Path = MODEL_COMPARISON_RESULTS_PATH,
+) -> pd.DataFrame:
     """
     Run model comparison for selected subjects.
+
+    For each subject, this compares:
+    - CSP + LDA with different numbers of CSP components
+    - EEGNetSmall across multiple random seeds
     """
     if subjects is None:
         subjects = [1]
 
     REPORT_DIR.mkdir(exist_ok=True)
+
+    print()
+    print("=" * 72)
+    print("Running model comparison")
+    print("=" * 72)
+    print(f"Subjects: {subjects}")
+    print(f"CSP component options: {CSP_COMPONENT_OPTIONS}")
+    print(f"EEGNet seeds: {EEGNET_SEEDS}")
+    print(f"Output path: {output_path}")
 
     all_results = []
 
@@ -450,7 +469,7 @@ def run_comparison(subjects: list[int] | None = None) -> pd.DataFrame:
         all_results.extend(subject_results)
 
     results_df = pd.DataFrame(all_results)
-    results_df.to_csv(MODEL_COMPARISON_RESULTS_PATH, index=False)
+    results_df.to_csv(output_path, index=False)
 
     summary_df = (
         results_df.groupby(["model", "n_csp_components"], dropna=False)
@@ -459,25 +478,49 @@ def run_comparison(subjects: list[int] | None = None) -> pd.DataFrame:
             std_accuracy=("accuracy", "std"),
             mean_balanced_accuracy=("balanced_accuracy", "mean"),
             std_balanced_accuracy=("balanced_accuracy", "std"),
+            n_runs=("accuracy", "count"),
+        )
+        .reset_index()
+    )
+
+    subject_summary_df = (
+        results_df.groupby(["subject", "model", "n_csp_components"], dropna=False)
+        .agg(
+            mean_accuracy=("accuracy", "mean"),
+            std_accuracy=("accuracy", "std"),
+            mean_balanced_accuracy=("balanced_accuracy", "mean"),
+            std_balanced_accuracy=("balanced_accuracy", "std"),
+            n_runs=("accuracy", "count"),
         )
         .reset_index()
     )
 
     print()
     print("=" * 72)
-    print("Model comparison summary")
+    print("Raw model comparison results")
     print("=" * 72)
     print(results_df)
 
     print()
-    print("Summary by model:")
+    print("=" * 72)
+    print("Summary by model")
+    print("=" * 72)
     print(summary_df)
 
     print()
-    print(f"Saved comparison results to: {MODEL_COMPARISON_RESULTS_PATH}")
+    print("=" * 72)
+    print("Summary by subject and model")
+    print("=" * 72)
+    print(subject_summary_df)
+
+    print()
+    print(f"Saved comparison results to: {output_path}")
 
     return results_df
 
 
 if __name__ == "__main__":
-    run_comparison(subjects=[1])
+    run_comparison(
+        subjects=ALL_SUBJECTS,
+        output_path=ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH,
+    )

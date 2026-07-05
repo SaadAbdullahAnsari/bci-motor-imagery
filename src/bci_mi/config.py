@@ -36,3 +36,8 @@ DATASET_NAME = "BNCI2014_001"
 # CSP settings.
 N_CSP_COMPONENTS = 6
 CSP_COMPONENT_OPTIONS = [2, 4, 6]
+
+MODEL_COMPARISON_RESULTS_PATH = REPORT_DIR / "model_comparison_results.csv"
+ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH = (
+    REPORT_DIR / "model_comparison_all_subjects_results.csv"
+)

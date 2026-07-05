@@ -19,12 +19,15 @@ def test_core_imports():
 def test_project_imports():
     from bci_mi.config import (
         ALL_SUBJECTS,
+        ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH,
         CSP_COMPONENT_OPTIONS,
+        EEGNET_SEEDS,
         FMAX,
         FMIN,
         N_CSP_COMPONENTS,
         SUBJECTS,
     )
+
     from bci_mi.data import load_left_right_data
     from bci_mi.train import build_pipeline
 
@@ -36,6 +39,7 @@ def test_project_imports():
     assert load_left_right_data is not None
     assert build_pipeline is not None
     assert CSP_COMPONENT_OPTIONS == [2, 4, 6]
+    assert ALL_SUBJECTS_MODEL_COMPARISON_RESULTS_PATH is not None
 
 
 def test_pipeline_steps():
